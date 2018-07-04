@@ -14,6 +14,22 @@ must log into their account with their matching user
 name and password or they do not gain access to the
 blog site's main displays features.
  -->
+<!--
+Login Page
+Developers: James-Ryan Stampley, Zachary Chambers, David Pratt Jr., Brandon Labat
+Version 3.0
+PHP Storm version 2018.1
+References:
+			https://www.w3schools.com/html/html_forms.asp
+			https://stackoverflow.com/questions/11869662/display-alert-message-and-redirect-after-click-on-accept/11869779
+
+This is the login page where users will
+gain access to their specialized account they
+created in the registration page. From here the user
+must log into their account with their matching user
+name and password or they do not gain access to the
+blog site's main displays features.
+ -->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -46,4 +62,5 @@ blog site's main displays features.
 		?>
 	</style>
 
+</html>
 </html>
