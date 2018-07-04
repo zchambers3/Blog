@@ -1,0 +1,60 @@
+a{
+	color:red;
+}
+h1 {
+	text-align: center;
+	font-style : italic;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-size: cover;
+	text-align: center;
+	background-image: url("images/backgroundimage.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	color:white;
+}
+
+div {
+	font-size : 14pt;
+	margin: 0 auto;
+	width : 300px;
+	border-color: black;
+	border-style: solid;
+	border-width: 1px;
+	background-color: black;
+	opacity: 0.8;
+	color:white;
+}
+
+#paraform {
+	font-style : italic;
+	text-align : center;
+	font-size : 9pt;
+}
+
+input {
+	width : 250px;
+}
+
+#submit {
+	width : 60px;
+}
+form {
+	text-align:center;
+}
+.footer{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	color: black;
+	text-align: center;
+	font-size: 9pt;
+}
+
+
+
+
