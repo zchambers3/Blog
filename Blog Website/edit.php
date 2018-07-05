@@ -1,32 +1,44 @@
-<?php
-session_start();
-      include_once("./index/server.php");
+<?php include_once("./index/server.php");
       include_once("navigation.php");
 
+      $title = "";
+      $userid = "";
+      $textarea = "";
+      $id= 0;
 
-if (isset($_GET['edit']))
-{
+if (isset($_POST['Submit'])) {
+    $id = $_POST['id'];
+    $title = $_POST['title'];
+    $userid = $_POST['userid'];
+    $textarea = $_POST['textarea'];
+    mysqli_query($conn, "UPDATE blog_post SET title='$title', userid='$userid', textarea='$textarea' WHERE id=$id");
+    header('location: Blog Forum.php');
+}
+
+if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
-    $results = mysqli_query($conn, "SELECT textarea FROM blog_post WHERE id='$id'");
-    $row = mysqli_fetch_array($results);
+    $query1 = mysqli_query($conn, "SELECT * FROM blog_post WHERE id=$id");
+
+    while ($row1 = mysqli_fetch_array($query1)) {
+        echo "<form class='form' method='POST'>";
+        echo "<h2>Edit Form</h2>";
+        echo "<hr/>";
+        echo "<input type='hidden' name='id' value='{$row1['id']}' />";
+        echo "<br />";
+        echo "<label>" . "Title" . "</label>" . "<br />";
+        echo "<input type='text' name='title' value=' {$row1['title']}' />";
+        echo "<br />";
+        echo "<label>" . "Username:" . "</label>" . "<br />";
+        echo "<input type='text' name='userid' value='{$row1['userid']}' />";
+        echo "<br />";
+        echo "<label>" . "Post Body:" . "</label>" . "<br />";
+        echo "<input type='text' name='textarea' value='{$row1['textarea']}' />";
+        echo "<br />";
+
+        echo "<input id='submit' type='submit' name='Submit' value='Update' />";
+        echo "</form>";
+    }
 }
 
-if (isset($_POST['newTextarea']))
-{
-    $newTextarea  =   $_POST['newTextarea'];
-    $id           =   $_POST['id'];
-    $sql          =  "UPDATE blog_post SET id ='$id' textarea = '$textarea' WHERE id='$id'";
-    $results      =   mysqli_query($conn, $sql) or die ("Could not update records" . mysqli_error($conn));
-    echo "<meta http-equiv='refresh' content='0; url=Blog Forum.php'>";
-}
 
-?>
-<?php
-    while ($row = mysqli_fetch_array($results)) { ?>
 
-<form class="gridHolder" action="edit.php" method="POST">
-    <textarea id="textarea" placeholder="Enter the new blog post here" name=newTextarea" form="<?php echo $row['textarea'];?>"></textarea><br><br>
-    <input type="hidden" name="id" value="<?php echo $row[0];?>"><br><br>
-    <input id="submit" type="submit" name="Submit" value="Update">
-</form>
-    <?php } ?>

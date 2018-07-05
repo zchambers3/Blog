@@ -13,7 +13,7 @@
         <input id="username" type="text" placeholder="Enter your username" name="userid" required>
         <input id="title" type="text" placeholder="Title" name="title" required>
         <input id="date" type="text" placeholder="Date" name="date" value="<?php echo date("l jS \of F Y");?>" required>
-        <textarea id="textarea" placeholder="Write your post here" name="textarea" required></textarea>
+        <input id="textarea" placeholder="Write your post here" name="textarea" required>
         <input id="submit" type="submit" name="Submit" value="Submit">
     </form>
 
@@ -44,14 +44,15 @@ $textarea = "";
      $sql = "INSERT INTO `blog_post` (userid, title, date, textarea)
              VALUES ('" . addslashes($userid) . "', '" . addslashes($title) . "',
             '" . addslashes($date) . "', '" . addslashes($textarea) . "')";
- }
+     $_SESSION['message'] = "Blog saved";
+
 
 //error message for failed connection
-if ($conn->query($sql) === TRUE) {
+     if ($conn->query($sql) === TRUE) {
 
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
+     } else {
+         echo "Error: " . $sql . "<br>" . $conn->error;
+     }
+ }
 $conn->close();
 ?>

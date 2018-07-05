@@ -1,8 +1,9 @@
 <!--Blog Forum
 Developers: James-Ryan Stampley, Zachary Chambers, David Pratt Jr., Brandon Labat
-Version 2.0
+Version 3.0
 PHP Storm version 2018.1
-References:
+References: https://www.formget.com/update-data-in-database-using-php/
+            https://www.youtube.com/watch?v=MYhw4-Bc-oM
 
 
 This is the main Forum page, where a user will go to view all
@@ -63,10 +64,10 @@ while ($row = mysqli_fetch_array($results)) { ?>
             <td><?php echo $row['date']; ?></td>
             <td><?php echo $row['textarea']; ?></td>
             <td>
-                <a href='edit.php?edit=$row[2]'>Edit</a>
+                <a href='edit.php?edit=<?php echo $row['id'];?>'>Edit</a>
             </td>
             <td>
-                <a href='./index/delete.php?delete=$row[, title]'>Delete</a>
+                <a href='delete.php?del=<?php echo $row['id'];?>'>Delete</a>
             </td>
         </tr>
         </tbody>
